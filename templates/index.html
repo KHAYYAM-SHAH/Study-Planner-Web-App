@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Study Companion</title>
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/all.min.css">
+    <script src="/static/js/form.js"></script>
+</head>
+<body>
+
+    <header>
+        
+        <h1>Smart Study Companion.<br> Your Personal Study Assistant. We have what you need</h1>
+        <img src="/static/images/laptop-pic.jpg" height="190px" width="300px" >
+
+    </header>
+
+    <!-- Add the login button to the navigation bar -->
+        <nav class="navbar">
+            <div class="logo">SmartStudyCompanion</div>
+            <ul class="links">
+                <li><a href="#tasks">Tasks</a></li>
+                <li><a href="#calendar">Calendar</a></li>
+                <li><a href="#chat">Chat</a></li>
+                <li><a href="#notes">Notes</a></li>
+                <li><a href="#timer">Timer</a></li>
+                <li><button id="loginButton">Login</button></li>
+            </ul>
+        </nav>
+
+
+<!-- Login/Signup Form -->
+<div id="loginModal" class="modal">
+    <div class="modal-content">
+        <button id="cancelButton" onclick="cancelForm()">&times;</button>
+        <h2 id="formTitle">Login</h2>
+        <form id="loginForm" action="/login" method="POST" >
+            <div id="part1">
+                <!-- login form content -->
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">Login</button>
+            </div>
+            <div id="part2">
+                <img src="/static/images/login-img.jpg" height="190px" width="300px">
+            </div>
+        </form>
+        
+
+        <form id="signupForm" action="/signup" method="POST" style="display: none;">
+            <div id="part3">
+            <!-- signup form content -->
+            <input type="text" id="signupUsername" placeholder="Username" required>
+            <input type="password" id="signupPassword" placeholder="Password" required>
+            <input type="password" id="signupConfirmPassword" placeholder="Confirm Password" required>
+            <button type="submit">Signup</button>
+        </div>
+            <div id="part4">
+                <img src="/static/images/login-img.jpg" height="190px" width="300px">
+            </div>
+        </form>
+        <button id="toggleForm" onclick="toggleForm()">Don't have an account? Signup</button>
+       
+    </div>
+</div>
+
+<div class="section">
+    <section id="tasks">
+        <h2>Task Manager</h2>
+        <input type="text" id="taskInput" placeholder="Add a new task">
+        <input type="date" id="taskDate">
+        <input type="time" id="taskTime">
+        <button onclick="addTask()">Add Task</button>
+        <ul id="taskList"></ul>
+    </section>
+</div>
+
+<div class="section">
+    <section id="calendar">
+        <h2>Calendar</h2>
+       
+        <div class="calendarContainer">
+            <div class="calendar-header">
+              <h2 id="month-year"></h2>
+              <button id="prev-month">Prev</button>
+              <button id="next-month">Next</button>
+            </div>
+            <div class="calendar-body">
+              <table id="calendar-table">
+                <thead>
+                  <tr>
+                    <th>Sun</th>
+                    <th>Mon</th>
+                    <th>Tue</th>
+                    <th>Wed</th>
+                    <th>Thu</th>
+                    <th>Fri</th>
+                    <th>Sat</th>
+                  </tr>
+                </thead>
+                <tbody id="calendar-tbody">
+                  <!-- calendar days will be generated here -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        
+
+    </section>
+</div>
+
+<div class="section">
+    <section id="chat">
+        <h2>Chat/Discussion Forum</h2>
+        <div id="chatBox">
+            <div id="messages"></div>
+            <input type="text" id="chatInput" placeholder="Type a message">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </section>
+</div>
+
+<div class="section">
+    <section id="notes">
+        <h2>Notes</h2>
+        <!-- Form to add a new note -->
+<input type="text" id="noteTitle" placeholder="Note Title">
+<textarea id="noteContent" placeholder="Note Content"></textarea>
+<button onclick="addNote()">Add Note</button>
+
+<!-- List of notes -->
+<ul id="noteList"></ul>  
+
+    </section>
+</div>
+
+<div class="section">
+    <section id="timer">
+        <h2>Timer</h2>
+        <div id="timerDisplay">00:00:00</div>
+        <button onclick="startTimer()">Start</button>
+        <button onclick="stopTimer()">Stop</button>
+        <button onclick="resetTimer()">Reset</button>
+    </section>
+</div>
+
+    <footer class="footer">
+        &copy; 2024 Smart Study Planner. All rights reserved.
+    </footer>
+
+    <script src="/static/js/script.js"></script>
+    
+</body>
+</html>
